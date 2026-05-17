@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SecureCoda Monitor — Paginated</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        .alert-json-box {
+    max-width: 420px;
+    max-height: 220px;
+    overflow: auto;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    white-space: pre-wrap; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+<div class="max-w-6xl mx-auto p-6">
+
+    <!-- Header -->
+    <header class="bg-white rounded-xl shadow p-5 mb-6">
+        <div class="flex items-center justify-center gap-4 text-center w-full">
+            <h1 class="text-2xl font-semibold">SecureCoda Monitor</h1>
+            <button id="refreshBtn" class="ml-2 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Refresh</button>
+            <div class="text-sm text-slate-500" id="lastUpdated"></div>
+        </div>
+    </header>
+
+    <!-- Alerts card -->
+    <section class="bg-white rounded-xl shadow p-5 mb-6">
+        <h2 class="text-lg font-semibold mb-4 text-center">Alerts</h2>
+
+        <!-- Horizontal toolbar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+
+            <!-- Search -->
+            <div class="flex items-center gap-2">
+                <label class="text-sm font-medium text-slate-600">Search:</label>
+                <input id="searchInput" placeholder="Search docId / docName / type" class="w-64 px-3 py-2 border rounded-md" />
+            </div>
+
+            <!-- Page size -->
+            <div class="flex items-center gap-2">
+                <label class="text-sm font-medium text-slate-600">Page size:</label>
+                <select id="pageSizeSelect" class="px-3 py-2 border rounded-md">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+
+            <!-- Pagination controls -->
+            <div class="flex items-center gap-2">
+                <button id="firstPageBtn" class="px-3 py-1 border rounded-md text-sm">First</button>
+                <button id="prevPageBtn" class="px-3 py-1 border rounded-md text-sm">Prev</button>
+                <div id="pageInfo" class="text-sm text-slate-600"></div>
+                <button id="nextPageBtn" class="px-3 py-1 border rounded-md text-sm">Next</button>
+                <button id="lastPageBtn" class="px-3 py-1 border rounded-md text-sm">Last</button>
+            </div>
+
+        </div>
+
+        <!-- Alerts table -->
+        <div id="alertsContainer"></div>
+    </section>
+
+    <!-- Documents card (simple) -->
+    <section class="bg-white rounded-xl shadow p-5 mb-6">
+        <h2 class="text-lg font-semibold mb-3">Documents</h2>
+        <div id="docsContainer"></div>
+    </section>
+
+</div>
+
+<script src="script.js"> </script>
+</body>
+</html>
+
